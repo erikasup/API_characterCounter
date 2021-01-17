@@ -1,3 +1,7 @@
+// Erika Supranavičiūtė  2021
+// Character Calculator
+// Android Studio version: 4.1.1
+
 package com.example.charactercalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,15 +15,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-// Erika Supranavičiūtė  2021
-// Character Calculator
-// Android Studio version: 4.0
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnOk;
+
     EditText edtText;
-    public static TextView textView;
+     TextView textView;
+     Button btnClear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +29,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle("Character Calculator");
 
-        btnOk = findViewById(R.id.btnOk);
+
         edtText = findViewById(R.id.edtText);
         textView = findViewById(R.id.textView);
+        btnClear = findViewById(R.id.btnClear);
 
 
         edtText.addTextChangedListener(new TextWatcher() {
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String convert = String.valueOf(character);
 
-                textView.setText("Number of characters " + convert);
+                textView.setText("Number of characters: " + convert);
             }
 
             @Override
@@ -54,18 +57,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        btnOk.setOnClickListener(new View.OnClickListener() {
+        btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                String nameValue = textView.getText().toString();
-                Intent intent = new Intent(MainActivity.this, counter.class);
-                intent.putExtra("isvesta", nameValue);
-                startActivity(intent);
-
-
+                edtText.setText(""); // Button clear text area
             }
         });
     }
